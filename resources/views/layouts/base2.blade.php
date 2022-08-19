@@ -65,12 +65,12 @@
         <x-carousel>
             <x-carousel.item src="img/carousel-1.jpg" alt="Image" :active="true">
                 <x-carousel.item.title>Liburan dan Wisata</x-carousel.item.title>
-                <x-carousel.item.caption>Mari Liburan ke Pulau Rupat</x-carousel.item.caption>
+                <x-carousel.item.caption>Mari Liburan ke Pulau Rupat Utara</x-carousel.item.caption>
                 <x-carousel.item.button href="{{ route('packet.index') }}">Pesan Sekarang</x-carousel.item.button>
             </x-carousel.item>
             <x-carousel.item src="img/carousel-2.jpg" alt="Image">
                 <x-carousel.item.title>Liburan dan Wisata</x-carousel.item.title>
-                <x-carousel.item.caption>Mari Liburan ke Pulau Rupat</x-carousel.item.caption>
+                <x-carousel.item.caption>Mari Liburan ke Pulau Rupat Utara</x-carousel.item.caption>
                 <x-carousel.item.button href="{{ route('packet.index') }}">Pesan Sekarang</x-carousel.item.button>
             </x-carousel.item>
         </x-carousel>
@@ -89,15 +89,15 @@
                     <div class="col-lg-6 pt-5 pb-lg-5">
                         <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
                             <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Tentang Kami</h6>
-                            <h1 class="mb-3">Kami menawarkan paket liburan ke pulau Rupat</h1>
+                            <h1 class="mb-3">Kami menawarkan paket liburan ke Pulau Rupat Utara</h1>
                             <p>Banyak sekali tempat wisata di Pulau rupat yang kami tawarkan untuk kalian Liburan
                             </p>
                             <div class="row mb-4">
                                 <div class="col-6">
-                                    <img class="img-fluid" src="{{ App\Models\Destination::inRandomOrder()->limit(1)->first()->photo_url }}" alt="">
+                                    <img class="img-fluid" src="{{ App\Models\Destination::inRandomOrder()->limit(1)->first()->photo_url }}" alt="" style="max-height: 206px; width: 450px">
                                 </div>
                                 <div class="col-6">
-                                    <img class="img-fluid" src="{{ App\Models\Destination::inRandomOrder()->limit(1)->first()->photo_url }}" alt="">
+                                    <img class="img-fluid" src="{{ App\Models\Destination::inRandomOrder()->limit(1)->first()->photo_url }}" alt="" style="max-height: 206px; width: 450px">
                                 </div>
                             </div>
                             <a href="{{ route('packet.index') }}" class="btn btn-primary mt-1">Pesan Sekarang</a>
@@ -164,10 +164,9 @@
                     @forelse (\App\Models\Destination::inRandomOrder()->limit(6)->get() as $destination)
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="destination-item position-relative overflow-hidden mb-2">
-                                <img class="img-fluid" src="{{ $destination->photo_url }}" alt="{{ $destination->slug }}" style="width: 400px;height: 250px;">
+                                <img class="img-fluid" src="{{ $destination->photo_url }}" alt="{{ $destination->slug }}" style="max-height: 206px; width: 450px">
                                 <a class="destination-overlay text-center text-white text-decoration-none" href="{{ route('destination.show',$destination->slug) }}">
                                     <h5 class="text-white">{{ $destination->name }}</h5>
-                                    {{-- <span>100 Cities</span> --}}
                                 </a>
                             </div>
                         </div>
@@ -194,7 +193,7 @@
                         <div class="col-lg-4 col-md-6 mb-4 d-flex align-self-stretch">
                             <div class="package-item bg-white mb-2 h-100">
                                 <img class="img-fluid" src="{{ $packet->destination->photo_url }}"
-                                    alt="{{ $packet->slug }}" style="width: 500px; m-height: 300px;">
+                                    alt="{{ $packet->slug }}" style="max-height: 206px; width: 450px">
                                 <div class="p-4">
                                     <div class="d-flex justify-content-between mb-3">
                                         <a href="{{ route('destination.show', $packet->destination->slug) }}" class="m-0">

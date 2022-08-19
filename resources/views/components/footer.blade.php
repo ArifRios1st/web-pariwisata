@@ -33,8 +33,8 @@
         <div class="col-lg-4 col-md-4 mb-5">
             <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Kontak Kami</h5>
             <p><i class="fa fa-map-marker-alt mr-2"></i>Rupat Utara, Indonesia</p>
-            <p><i class="fa fa-phone-alt mr-2"></i>+62 8888 8888 888</p>
-            <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+            <p><i class="fa fa-phone-alt mr-2"></i>+6283234352947</p>
+            <p><i class="fa fa-envelope mr-2"></i>kafikanurdiana42@gmail.com</p>
         </div>
     </div>
 </div>
