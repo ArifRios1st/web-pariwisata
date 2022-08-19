@@ -16,9 +16,6 @@ class DestinationsTableSeeder extends Seeder
     public function run()
     {
 
-
-        DB::table('destinations')->delete();
-
         DB::table('destinations')->insert(array (
             0 =>
             array (

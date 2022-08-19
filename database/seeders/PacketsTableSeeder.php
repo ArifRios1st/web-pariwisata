@@ -16,9 +16,6 @@ class PacketsTableSeeder extends Seeder
     public function run()
     {
 
-
-        DB::table('packets')->delete();
-
         DB::table('packets')->insert(array (
             0 =>
             array (
