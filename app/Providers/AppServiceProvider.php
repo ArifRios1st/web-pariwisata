@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Settings;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 use NascentAfrica\Jetstrap\JetstrapFacade;
@@ -30,5 +31,6 @@ class AppServiceProvider extends ServiceProvider
         date_default_timezone_set(config('app.timezone'));
         JetstrapFacade::useAdminLte3();
         Blade::directive('currency', function ( $expression ) { return "Rp. <?php echo number_format($expression,0,',','.'); ?>"; });
+        Settings::chargeConfig();
     }
 }
