@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('settings.name','Laravel') }}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta content="{{ config('app.name', 'Laravel') }}" name="keywords">
-    <meta content="{{ config('app.name', 'Laravel') }}" name="description">
+    <meta content="{{ config('settings.name','Laravel') }}" name="keywords">
+    <meta content="{{ config('settings.name','Laravel') }}" name="description">
 
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.ico') }}" rel="icon">

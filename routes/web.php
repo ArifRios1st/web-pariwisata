@@ -6,12 +6,14 @@ use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\DestinationUserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PacketController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TicketController;
 use App\Models\Destination;
 use App\Models\Packet;
 use Illuminate\Support\Facades\Route;
 use Yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,8 +125,9 @@ Route::middleware([
             });
             Route::get('/storage',function(){
               ddd(Artisan::call('optimize:clear'));
-              //ddd(Artisan::call('storage:link'));
             });
+            Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+            Route::put('/settings/update', [SettingsController::class, 'update'])->name('settings.update');
         });
     });
     Route::prefix('/user')->name('user.')->group(function(){

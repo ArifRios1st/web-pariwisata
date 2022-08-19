@@ -2,7 +2,7 @@
     <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
         <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
             <a href="{{ route('home') }}" class="navbar-brand">
-                <h1 class="m-0 text-primary">{{ config('app.name', 'Laravel') }}</h1>
+                <h1 class="m-0 text-primary">{{ config('settings.name', 'Laravel') }}</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -36,10 +36,14 @@
                                         {{ __('Kelola Destinasi') }}
                                     </x-jet-dropdown-link>
 
+
                                     <x-jet-dropdown-link href="{{ route('admin.order.index') }}">
                                         {{ __('Kelola Pesanan') }}
                                     </x-jet-dropdown-link>
 
+                                    <x-jet-dropdown-link href="{{ route('admin.settings.index') }}">
+                                        {{ __('Pengaturan Website') }}
+                                    </x-jet-dropdown-link>
                                 </x-slot>
                             </x-jet-dropdown>
                         @endif

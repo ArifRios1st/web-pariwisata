@@ -69,6 +69,11 @@ Breadcrumbs::for('admin.destination.packet.show', function (BreadcrumbTrail $tra
     $trail->push($packet->name, route('admin.destination.packet.show', [$destination->slug, $packet->slug]));
 });
 
+Breadcrumbs::for('admin.settings.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin');
+    $trail->push('Pengaturan Website');
+});
+
 
 Breadcrumbs::for('destination.index', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
