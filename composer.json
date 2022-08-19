@@ -15,6 +15,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
+        "orangehill/iseed": "^3.0",
         "rappasoft/laravel-livewire-tables": "^2.8",
         "spatie/browsershot": "^3.57",
         "spatie/laravel-permission": "^5.5",
