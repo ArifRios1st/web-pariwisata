@@ -36,9 +36,12 @@
                                         {{ __('Kelola Destinasi') }}
                                     </x-jet-dropdown-link>
 
-
                                     <x-jet-dropdown-link href="{{ route('admin.order.index') }}">
                                         {{ __('Kelola Pesanan') }}
+                                    </x-jet-dropdown-link>
+
+                                    <x-jet-dropdown-link href="{{ route('admin.bank.index') }}">
+                                        {{ __('Kelola Rekening Bank') }}
                                     </x-jet-dropdown-link>
 
                                     <x-jet-dropdown-link href="{{ route('admin.settings.index') }}">

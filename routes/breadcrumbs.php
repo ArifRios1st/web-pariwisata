@@ -1,5 +1,6 @@
 <?php // routes/breadcrumbs.php
 
+use App\Models\BankAccount;
 use App\Models\Destination;
 use App\Models\Order;
 use App\Models\Packet;
@@ -72,6 +73,22 @@ Breadcrumbs::for('admin.destination.packet.show', function (BreadcrumbTrail $tra
 Breadcrumbs::for('admin.settings.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin');
     $trail->push('Pengaturan Website');
+});
+
+Breadcrumbs::for('admin.bank.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin');
+    $trail->push('Kelola Rekening Bank', route('admin.bank.index'));
+});
+
+Breadcrumbs::for('admin.bank.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.bank.index');
+    $trail->push('Tambah Rekening');
+});
+
+Breadcrumbs::for('admin.bank.edit', function (BreadcrumbTrail $trail, BankAccount $bankAccount) {
+    $trail->parent('admin.bank.index');
+    $trail->push($bankAccount->bank_name, route('admin.bank.index'));
+    $trail->push('Edit Rekening');
 });
 
 
