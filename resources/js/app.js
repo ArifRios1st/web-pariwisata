@@ -134,6 +134,44 @@ $('.datatable#destinationPacket').DataTable({
 
 });
 
+$('.datatable#bank').DataTable({
+    processing: true,
+    serverSide: true,
+    ajax: "/admin/getBankAccount",
+    columns: [{
+            data: 'DT_RowIndex',
+            name: 'DT_RowIndex',
+            orderable: false,
+            searchable: false,
+        },
+        {
+            data: 'photo_url',
+            name: 'photo_url',
+            render: function(data){
+                return "<img src="+data+" class='img-fluid' style=''>";
+            }
+        },
+        {
+            data: 'bank_name',
+            name: 'bank_name'
+        },
+        {
+            data: 'account_number',
+            name: 'account_number'
+        },
+        {
+            data: 'name',
+            name: 'name'
+        },
+        {
+            data: 'action',
+            name: 'action',
+            orderable: true,
+            searchable: true
+        },
+    ]
+});
+
 if($("#ckeditor").length){
     ClassicEditor
         .create( document.querySelector( '#ckeditor' ), {

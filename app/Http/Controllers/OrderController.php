@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderPaymentRequest;
 use App\Http\Requests\OrderRequest;
+use App\Models\BankAccount;
 use App\Models\Order;
 use App\Models\Packet;
 use Illuminate\Http\Request;
@@ -74,7 +75,8 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        return view('user.order.edit', ['order' => $order]);
+        $bankAccounts = BankAccount::all();
+        return view('user.order.edit', ['order' => $order, 'bankAccounts' => $bankAccounts]);
     }
 
     /**

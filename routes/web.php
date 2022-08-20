@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminOrderController;
+use App\Http\Controllers\BankAccountController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\DestinationUserController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PacketController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TicketController;
+use App\Models\BankAccount;
 use App\Models\Destination;
 use App\Models\Packet;
 use Illuminate\Support\Facades\Route;
@@ -99,6 +101,28 @@ Route::middleware([
                             ->make(true);
                     }
             })->name('destination.getPacket');
+
+            Route::get('/getBankAccount', function (Request $request) {
+                if ($request->ajax()) {
+                        $data = BankAccount::all();
+                        return DataTables::of($data)
+                            ->addIndexColumn()
+                            ->addColumn('action', function($row){
+                                $actionBtn = '
+                                <form onsubmit="return confirm('."'Apakah Anda Yakin ?'".');"
+                                    action="'.route("admin.bank.destroy", $row->id).'" method="POST">
+                                    <input type="hidden" name="_token" value="'.csrf_token().'">
+                                    <input type="hidden" name="_method" value="delete" />
+                                    <a href="'.route('admin.bank.edit', $row->id).'" class="edit btn btn-success btn-sm">Edit</a>
+                                    <button type="submit" class="delete btn btn-danger btn-sm" >Delete</button>
+                                </form>';
+                                return $actionBtn;
+                            })
+                            ->rawColumns(['action'])
+                            ->make(true);
+                    }
+            })->name('getBankAccount');
+
             Route::prefix('/destinations')->name('destination.')->group(function () {
                 Route::get('/', [DestinationController::class, 'index'])->name('index');
                 Route::get('/create', [DestinationController::class, 'create'])->name('create');
@@ -118,16 +142,29 @@ Route::middleware([
                 Route::delete('/packets/{packet:slug}/destyoy', [DestinationController::class, 'packetDestroy'])->name('packet.destroy');
 
             });
+
             Route::prefix('/order')->name('order.')->group(function(){
                 Route::get('/', [AdminOrderController::class, 'index'])->name('index');
                 Route::put('/{order}/reject', [AdminOrderController::class, 'reject'])->name('reject');
                 Route::put('/{order}/accept', [AdminOrderController::class, 'accept'])->name('accept');
             });
+
             Route::get('/storage',function(){
               ddd(Artisan::call('optimize:clear'));
             });
+
             Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
             Route::put('/settings/update', [SettingsController::class, 'update'])->name('settings.update');
+
+            Route::prefix('/bank')->name('bank.')->group(function(){
+                Route::get('/', [BankAccountController::class, 'index'])->name('index');
+                Route::get('/create', [BankAccountController::class, 'create'])->name('create');
+                Route::get('/{bankAccount}/edit', [BankAccountController::class, 'edit'])->name('edit');
+                Route::post('/store', [BankAccountController::class, 'store'])->name('store');
+                Route::put('/{bankAccount}/update', [BankAccountController::class, 'update'])->name('update');
+                Route::delete('/{bankAccount}/destroy', [BankAccountController::class, 'destroy'])->name('destroy');
+            });
+
         });
     });
     Route::prefix('/user')->name('user.')->group(function(){
@@ -139,6 +176,7 @@ Route::middleware([
             Route::put('/{order}/update',[OrderController::class, 'update'])->name('update');
             Route::put('/{order}/cancel',[OrderController::class, 'cancel'])->name('cancel');
         });
+
         Route::get('/ticket/{order}', [TicketController::class, 'index'])->name('ticket.index');
         Route::get('/ticket/download/{order}', [TicketController::class, 'download'])->name('ticket.donwload');
     });

@@ -20,24 +20,17 @@
                     <div class="card p-3">
                         <span class="pb-5">Pembayaran ditransfer ke no rekening berikut :</span>
                         <div class="row justify-content-around">
-                            <div class="col-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <img src="{{ asset('img/bank-bni.png') }}" alt="" style="height: 30px">
-                                        <h6 class="mt-2">Nama</h6>
-                                        <h6>xxx-xxx-xxx-xx</h6>
+                            @foreach ($bankAccounts as $bank)
+                                <div class="col-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <img src="{{ $bank->photo_url }}" alt="" style="height: 30px">
+                                            <h6 class="mt-2">{{ $bank->name }}</h6>
+                                            <h6>{{ $bank->account_number }}</h6>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <img src="{{ asset('img/BRI_2020.svg.png') }}" alt="" style="height: 30px">
-                                        <h6 class="mt-2">Nama</h6>
-                                        <h6>xxx-xxx-xxx-xx</h6>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         <div class="inputbox mt-3">
                             <input type="file" name="photo" class="form-control" accept="image/png, image/gif, image/jpeg" required>
